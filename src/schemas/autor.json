@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["nome"],
+  "additionalProperties": false,
+  "properties": {
+    "nome": { "type": "string", "maxLength": 200 }
+  },
+  "errorMessage": {
+    "type": "É necessário passar um objeto válido.",
+    "additionalProperties": "Não é possível passar propriedades não mapeadas.",
+    "properties": {
+      "nome": "O nome só pode conter no máximo 200 caracteres"
+    },
+    "required": {
+      "nome": "Campo nome é necessário"
+    }
+  }
+}

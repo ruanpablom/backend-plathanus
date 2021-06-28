@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Back-end desafio plathanus",
+  "main": "server.js",
+  "scripts": {
+    "dev": "NODE_ENV=dev nodemon ./server.js"
+  },
+  "author": "Ruan Pablo Medeiros",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7",
+    "sucrase": "^3.19.0"
+  },
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http-status": "^1.5.0",
+    "pg-promise": "^10.10.2"
+  }
+}

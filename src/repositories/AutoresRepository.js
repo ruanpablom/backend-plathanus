@@ -18,6 +18,15 @@ class AutorRepository {
       values: [],
     });
   }
+
+  async getAutor(id) {
+    return db.oneOrNone({
+      name: 'get-autor',
+      text: `select * from autores
+              where id = $1`,
+      values: [id],
+    });
+  }
 }
 
 export default new AutorRepository();

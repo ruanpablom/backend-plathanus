@@ -20,6 +20,16 @@ class AutoresService {
       throw err;
     }
   }
+
+  async getAutor(id) {
+    try {
+      const autor = await AutoresRepository.getAutor(id);
+      return autor;
+    } catch (err) {
+      console.log({ err });
+      throw err;
+    }
+  }
 }
 
 export default new AutoresService();

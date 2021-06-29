@@ -8,7 +8,7 @@ import autorJson from '../schemas/autor.json';
 class AutoresController {
   async store(req, res) {
     try {
-      AjvUtils.validate(autorJson);
+      AjvUtils.validate(req.body, autorJson);
 
       const { nome } = req.body;
       const autor = await AutoresService.inserirAutor(nome);

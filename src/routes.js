@@ -13,7 +13,9 @@ routes.post('/autores', AutoresController.store);
 routes.get('/autores', AutoresController.index);
 
 routes.get('/noticias', NoticiasController.index);
-routes.post('/noticias', NoticiasController.store);
 routes.get('/noticias/:id', NoticiasController.show);
+routes.post('/noticias', NoticiasController.store);
+routes.put('/noticias', NoticiasController.update);
+routes.delete('/noticias', NoticiasController.delete);
 
 export default routes;

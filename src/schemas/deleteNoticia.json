@@ -1,0 +1,18 @@
+{
+  "type": "object",
+  "required": ["id"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" }
+  },
+  "errorMessage": {
+    "type": "É necessário passar um objeto válido.",
+    "additionalProperties": "Não é possível passar propriedades não mapeadas.",
+    "properties": {
+      "id": "O id deve ser uma string"
+    },
+    "required": {
+      "id": "O campo id é necessário"
+    }
+  }
+}

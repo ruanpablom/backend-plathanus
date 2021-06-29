@@ -10,9 +10,8 @@ class AjvUtils {
     AjvErrors(this.ajv);
   }
 
-  validate(body, schema, file) {
+  validate(body, json) {
     // eslint-disable-next-line import/no-dynamic-require
-    const json = require(`${schema}/${file}.json`);
     const validate = this.ajv.compile(json);
     if (!validate(body)) {
       const messages = [];

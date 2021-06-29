@@ -11,6 +11,16 @@ class NoticiasService {
     }
   }
 
+  async updateNoticia(id, titulo, texto, autorId) {
+    try {
+      const noticia = await NoticiasRepository.updateNoticia(id, titulo, texto, autorId);
+      return noticia;
+    } catch (err) {
+      console.log({ err });
+      throw err;
+    }
+  }
+
   async getNoticia(id) {
     try {
       const noticia = await NoticiasRepository.getNoticia(id);
@@ -24,7 +34,27 @@ class NoticiasService {
   async getAllNoticias() {
     try {
       const noticias = await NoticiasRepository.getAllNoticias();
-      return noticias;
+      return noticias.length !== 0 ? noticias : 'Não existem noticias cadastradas';
+    } catch (err) {
+      console.log({ err });
+      throw err;
+    }
+  }
+
+  async filterNoticias(filter) {
+    try {
+      const noticias = await NoticiasRepository.filterNoticias(filter);
+      return noticias.length !== 0 ? noticias : `'${filter}' não encontrado`;
+    } catch (err) {
+      console.log({ err });
+      throw err;
+    }
+  }
+
+  async deleteNoticia(id) {
+    try {
+      await NoticiasRepository.deleteNoticia(id);
+      return 'Noticia excluida';
     } catch (err) {
       console.log({ err });
       throw err;

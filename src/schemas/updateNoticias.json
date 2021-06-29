@@ -1,0 +1,27 @@
+{
+  "type": "object",
+  "required": ["id", "titulo", "texto", "autorId"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string" },
+    "titulo": { "type": "string", "maxLength": 200 },
+    "texto": { "type": "string" },
+    "autorId": { "type": "string" }
+  },
+  "errorMessage": {
+    "type": "É necessário passar um objeto válido.",
+    "additionalProperties": "Não é possível passar propriedades não mapeadas.",
+    "properties": {
+      "id": "O id deve ser uma string",
+      "titulo": "O titulo só pode conter no máximo 200 caracteres",
+      "texto": "O texto deve ser uma string",
+      "autorId": "O autorId deve ser uma string"
+    },
+    "required": {
+      "id": "O campo id é necessário",
+      "titulo": "O campo titulo é necessário",
+      "texto": "O campo texto é necessário",
+      "autorId": "O campor autorId é necessário"
+    }
+  }
+}

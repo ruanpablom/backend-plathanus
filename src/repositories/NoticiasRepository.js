@@ -10,10 +10,20 @@ class NoticiasRepository {
     });
   }
 
+  async updateNoticia(id, titulo, texto, autorId) {
+    return db.oneOrNone({
+      name: 'update-noticia',
+      text: `update noticias 
+              set titulo=$2, texto=$3, autor_id=$4
+              where id=$1`,
+      values: [id, titulo, texto, autorId],
+    });
+  }
+
   async getNoticia(id) {
     return db.oneOrNone({
       name: 'get-noticia',
-      text: `select n.id, n.titulo, n.texto, a.nome as autor_nome from noticias n
+      text: `select n.id, n.titulo, n.texto, json_build_object('id', a.id, 'nome', a.nome) as autor from noticias n
               join autores a on n.autor_id=a.id 
               where n.id =$1`,
       values: [id],
@@ -23,9 +33,28 @@ class NoticiasRepository {
   async getAllNoticias() {
     return db.manyOrNone({
       name: 'get-all-noticias',
-      text: `select n.id, n.titulo, n.texto, a.nome as autor_nome from noticias n
+      text: `select n.id, n.titulo, n.texto, json_build_object('id', a.id, 'nome', a.nome) as autor from noticias n
               join autores a on n.autor_id=a.id`,
       values: [],
+    });
+  }
+
+  async filterNoticias(filter) {
+    return db.manyOrNone({
+      text: `select n.id, n.titulo, n.texto, json_build_object('id', a.id, 'nome', a.nome) as autor from noticias n
+              join autores a on n.autor_id=a.id
+              where n.titulo ilike '%${filter}%'
+              or n.texto ilike '%${filter}%'
+              or a.nome ilike '%${filter}%'`,
+    });
+  }
+
+  async deleteNoticia(id) {
+    return db.oneOrNone({
+      name: 'delete-noticia',
+      text: `delete from noticias
+              where id=$1`,
+      values: [id],
     });
   }
 }

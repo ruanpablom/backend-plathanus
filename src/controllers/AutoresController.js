@@ -3,13 +3,12 @@ import AjvError from '../errors/AjvError';
 import NaoExistemAutoresError from '../errors/NaoExistemAutoresError';
 import handler from '../handler/Handler';
 import AutoresService from '../services/AutoresService';
-
-const schema = '../schemas';
+import autorJson from '../schemas/autor.json';
 
 class AutoresController {
   async store(req, res) {
     try {
-      AjvUtils.validate(req.body, schema, 'autor');
+      AjvUtils.validate(autorJson);
 
       const { nome } = req.body;
       const autor = await AutoresService.inserirAutor(nome);

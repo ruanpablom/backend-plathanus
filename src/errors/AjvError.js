@@ -1,7 +1,7 @@
 class AjvError extends Error {
   constructor(err, ...params) {
     super(...params);
-    this.status = 401;
+    this.status = 400;
     this.message = { ...err };
   }
 }
